@@ -1,0 +1,210 @@
+/* popup.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Doto", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    background-color: #121212;
+    color: #fff;
+    overflow: hidden;
+  
+  }
+  
+  .container {
+    width: 320px;
+    height: 600px; /* Fixed popup height */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent overall overflow */
+    border-radius: 10px;
+    background-color: #0F172A; /* Optional background for container */
+    position: relative; /* Required for absolute positioning inside */
+    
+  }
+  
+  .search {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  #songQuery {
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-family: "Pixelify Sans", sans-serif;
+  }
+  
+  #searchButton {
+    padding: 10px;
+    font-size: 15px;
+    background-color: #1db954;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: "Pixelify Sans", sans-serif;
+    margin-left: 7px;
+  }
+  
+  #searchButton:disabled {
+    background-color: #8080804D;
+    cursor: not-allowed;
+  }
+  
+  .song-list {
+    height: 300px; /* Fixed height for the scrollable list */
+    overflow-y: auto; /* Enables scrolling when content overflows */
+    margin-bottom: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0px;
+  }
+  
+  li {
+    padding: 0px;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  li:hover {
+    background-color: #333;
+  }
+  
+  #closeButton {
+    position: absolute;
+    bottom: 10px;
+    right: 35px;
+    padding: 10px;
+    background-color: #8080804D;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: "Pixelify Sans", sans-serif;
+  }
+  
+  #closeButton:hover {
+    background-color: transparent;
+    border-color: #666;
+  }
+  
+  #backButton {
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    padding: 10px;
+    background-color: #8080804D;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: "Pixelify Sans", sans-serif;
+  }
+  
+  #backButton:hover {
+    background-color: transparent;
+    border-color: #666;
+  }
+  
+  /* Loading GIF */
+  #loadingGif {
+    margin-top: 50px;
+    width: 280px;
+   
+  }
+  
+  h1 {
+    font-size: 33px;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px; /* Adjust scrollbar width */
+    height: 8px; /* For horizontal scrollbar */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888; /* Scrollbar thumb color */
+    border-radius: 4px; /* Rounded edges */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Scrollbar thumb color on hover */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Scrollbar track color */
+  }
+/* Flexbox Layout for .box */
+.box {
+  display: flex;
+    /* Space out buttons evenly */
+  align-items: center;  /* Vertically align items */
+  width: 100%;  /* Take full width */
+  position: absolute;
+  bottom: 10px;
+  
+}
+
+button {
+  background-color: #8080804D;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+button:hover {
+  background-color: transparent;
+  border-color: #666;
+}
+
+/* Favorite Button (Heart Icon) */
+.favorite-btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+    bottom: 7px;
+    left: 38%;
+}
+
+.favorite-btn:hover {
+  background-color: transparent;
+  transform: scale(1.1);
+}
+
+.heart {
+  font-size: 30px;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.favorite-btn:hover .heart {
+  color: #1db954;
+}

@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "YT Amplify",
+  "description": "Search and play YouTube songs in a new tab. List your loved songs",
+  "version": "2.0",
+  "permissions": ["tabs", "activeTab", "scripting", "storage", "https://www.googleapis.com/", "webRequest", "webRequestBlocking","downloads"],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/watch?v=*"],
+      "js": ["content.js"]
+    }
+  ]
+}

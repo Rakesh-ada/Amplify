@@ -1,0 +1,560 @@
+/* popup.css */
+body {
+  margin: 0;
+  padding: 0;
+  
+  font-weight: 800;
+  font-style: normal;
+  background-color: #121212;
+  color: #fff;
+  overflow: hidden;
+}
+
+.container {
+  width: 280px; /* Reduced from 320px */
+  height: 410px; /* Reduced from 600px */
+  padding: 5px 20px; /* Adjusted padding */
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #0f172a;
+  position: relative;
+}
+
+.dynamic-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 15px auto;
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+
+
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 1.5px;
+  border-radius: 25px;
+  background: #1e293b;
+  box-shadow: 
+    0px 1px 2px rgba(0, 0, 0, 0.3),  
+    0px 2px 4px rgba(0, 0, 0.2),  
+    0px 4px 8px rgba(0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Neon Light Effect */
+.search-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent 0deg, 
+    transparent 80deg,  /* Transparent gap */
+    #1d5eb9 100deg,      /* Green light streak */
+    transparent 180deg,  /* Transparent gap */
+    transparent 260deg,  
+    #1d5eb9 280deg,      /* Second Green Light */
+    transparent 360deg
+  );
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: spin 4s linear infinite;
+}
+
+.search-wrapper:hover::before,
+.search-wrapper:focus-within::before {
+  opacity: 1;
+}
+
+/* Smooth Rotation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }   
+}
+
+
+
+.search-icon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+#songQuery {
+  width: 75px;
+  height: 24px;
+  padding: 8px 0px 8px 45px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  border-radius: 20px 0 0 20px;
+  font-family: "Pixelify Sans", sans-serif;
+  background-color: #1e293b;
+  color: #fff;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+#songQuery:focus,
+#songQuery:hover {
+  width: 120px;
+}
+
+#searchButton {
+  padding: 2px 15px;
+  font-size: 27px;
+  background-color: #1e293b;
+  color: #1db954;
+  border: none;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: "Pixelify Sans", sans-serif;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+#searchButton:hover {
+  background-color: #1e293bb7;
+  color: #1db954;
+  transform: none;
+}
+
+#searchButton:active {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #1e293b;
+  
+}
+
+#searchButton:disabled {
+  background-color: #1e293b;
+  color: white;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+.song-results-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  margin-top: 10px;
+  margin-bottom: 10px; /* Reduced from 20px */
+}
+
+.song-list {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 5px 0;
+  margin: 0 5px;
+}
+
+.song-item {
+  display: flex;
+  width: 145px;
+  margin: 0 5px;
+  background-color: #1e293b;
+  border-radius: 10px;
+  padding: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 
+    0px 3px 5px rgba(0, 0, 0, 0.3),  /* Base shadow */
+    0px 6px 10px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+}
+
+.song-item:hover {
+   /* Slight lift effect */
+  box-shadow: 
+    0px 5px 10px rgba(0, 0, 0, 0.3), 
+    0px 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadows on hover */
+}
+
+.song-item img {
+  width: 70px;
+  height: 46.5px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin: 5px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); /* Added shadow for image */
+}
+
+
+.song-item .title {
+  display: none;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrow-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.arrow-button:hover {
+  color: #1db954;
+}
+
+h1 {
+  font-size: 28px; /* Reduced from 33px */
+  text-align: center;
+  margin: 5px 0 10px; /* Adjusted margin */
+  color: #1db954;
+  text-shadow: 0 0 10px rgba(29, 185, 84, 0.5);
+}
+
+::-webkit-scrollbar {
+  height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+.box {
+  display: flex;
+  background-color:transparent;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0px; /* Reduced from 20px */
+  position: absolute;
+  bottom: 0px; /* Reduced from 10px */
+  left: 0;
+  padding-top: 0px;
+  padding-left: 30px;
+  padding-right: 30px; /* Reduced from 0 20px */
+  box-sizing: border-box;
+  
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2),  /* Small shadow for 3D effect */
+               0 2px 5px rgba(0, 0, 0, 0.1);  /* Slight depth */
+}
+
+button:hover {
+  background-color: transparent;
+}
+
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.favorite-btn {
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.favorite-btn:hover {
+  background-color: transparent;
+}
+
+.heart {
+  font-size: 30px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.favorite-btn:hover .heart {
+  color: #1db954;
+  transform: scale(1.1);
+}
+
+.current-song {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 13px;
+  margin-right: 13px;
+  margin-top: 5px; /* Reduced from 20px */
+  margin-bottom: 5px;
+  padding: 13px; /* Reduced from 20px */
+  padding-top: 12px;
+  padding-bottom: 15px;
+  border-radius: 10px;
+  background-color: #1e293b;
+  transition: all 0.3s ease;
+  max-height: 250px; /* Reduced from 300px */
+  overflow-y: auto; /* Add a scrollbar if content exceeds max-height */
+  box-shadow: 
+    0px 3px 5px rgba(0, 0, 0, 0.2),  /* Small close shadow */
+    0px 6px 10px rgba(0, 0, 0, 0.15), /* Mid-range shadow */
+    0px 12px 20px rgba(0, 0, 0, 0.1); /* Larger, soft shadow */
+}
+
+#currentThumbnail {
+  width: 150px; /* Reduced from 200px */
+  height: 85px; /* Adjusted proportionally */
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0px; /* Reduced from 15px */
+  background-color: #1e293b; /* Helps with contrast */
+  box-shadow: 
+    0 3px 5px rgba(0, 0, 0, 0.2),  /* Soft base shadow */
+    0 6px 12px rgba(0, 0, 0, 0.15), /* Mid-depth shadow */
+    0 10px 18px rgba(0, 0, 0, 0.1); /* Far-depth shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#currentThumbnail:hover {
+  box-shadow: 
+    0 5px 10px rgba(0, 0, 0, 0.3),
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+#currentTitle {
+font-size: 11px;
+  font-family: monospace;
+  color: #ffff;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top:13px;
+ margin-right: 5px;
+ margin-left: 5px;
+  max-height: 40px;           
+  overflow: hidden;           
+  display: -webkit-box;       
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;      
+  text-overflow: ellipsis;    
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  
+}
+
+
+
+#addToFavoritesButton {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  box-shadow: 
+    0px 3px 5px rgba(0, 0, 0, 0.3),  /* Soft base shadow */
+    0px 6px 10px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.3), 
+    2px 2px 3px rgba(0, 0, 0, 0.2); /* 3D text effect */
+}
+
+/* Hover effect - lifts button and enhances text shadow */
+#addToFavoritesButton:hover {
+  background-color: #1ed760;
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 
+    0px 5px 10px rgba(0, 0, 0, 0.3), 
+    0px 10px 20px rgba(0, 0, 0, 0.2);
+  text-shadow: 
+    2px 2px 3px rgba(0, 0, 0, 0.4), 
+    3px 3px 5px rgba(0, 0, 0, 0.3); /* Stronger 3D effect on hover */
+}
+
+/* Click effect - presses button down and slightly reduces text shadow */
+#addToFavoritesButton:active {
+  transform: scale(1) translateY(2px);
+  box-shadow: 
+    0px 2px 5px rgba(0, 0, 0, 0.2), 
+    0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.2), 
+    2px 2px 3px rgba(0, 0, 0, 0.1); /* Slightly reduced for pressed effect */
+}
+
+
+/* Download Playlist Button */
+#downloadPlaylistButton {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  box-shadow: 
+    0px 3px 5px rgba(0, 0, 0, 0.3),  /* Soft base shadow */
+    0px 6px 10px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.3), 
+    2px 2px 3px rgba(0, 0, 0, 0.2); /* 3D text effect */
+}
+
+/* Hover effect - lifts button and enhances text shadow */
+#downloadPlaylistButton:hover {
+  background-color: #1ed760;
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 
+    0px 5px 10px rgba(0, 0, 0, 0.3), 
+    0px 10px 20px rgba(0, 0, 0, 0.2);
+  text-shadow: 
+    2px 2px 3px rgba(0, 0, 0, 0.4), 
+    3px 3px 5px rgba(0, 0, 0, 0.3); /* Stronger 3D effect on hover */
+}
+
+/* Click effect - presses button down and slightly reduces text shadow */
+#downloadPlaylistButton:active {
+  transform: scale(1) translateY(2px);
+  box-shadow: 
+    0px 2px 5px rgba(0, 0, 0, 0.2), 
+    0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.2), 
+    2px 2px 3px rgba(0, 0, 0, 0.1); /* Slightly reduced for pressed effect */
+}
+
+/* Upload Playlist Button */
+#uploadPlaylistButton {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  box-shadow: 
+    0px 3px 5px rgba(0, 0, 0, 0.3),  /* Soft base shadow */
+    0px 6px 10px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.3), 
+    2px 2px 3px rgba(0, 0, 0, 0.2); /* 3D text effect */
+}
+
+/* Hover effect - lifts button and enhances text shadow */
+#uploadPlaylistButton:hover {
+  background-color: #1ed760;
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 
+    0px 5px 10px rgba(0, 0, 0, 0.3), 
+    0px 10px 20px rgba(0, 0, 0, 0.2);
+  text-shadow: 
+    2px 2px 3px rgba(0, 0, 0, 0.4), 
+    3px 3px 5px rgba(0, 0, 0, 0.3); /* Stronger 3D effect on hover */
+}
+
+/* Click effect - presses button down and slightly reduces text shadow */
+#uploadPlaylistButton:active {
+  transform: scale(1) translateY(2px);
+  box-shadow: 
+    0px 2px 5px rgba(0, 0, 0, 0.2), 
+    0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.2), 
+    2px 2px 3px rgba(0, 0, 0, 0.1); /* Slightly reduced for pressed effect */
+}
+
+
+#loadingGif {
+  position:absolute;
+  top: 72%;
+  left: 31%;
+  width: 100px;
+  margin-bottom: 20px;
+  display: none;
+}
+
+#backButton {
+  background-color: transparent;
+}
+
+#closeButton {
+  background-color: transparent;
+  
+}

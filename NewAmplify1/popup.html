@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amplify</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Pixelify+Sans&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="dynamic-background"></div>
+    <header>
+      
+      <div class="search-container">
+        <div class="search-wrapper">
+        <img src="icon.png" alt="Search Icon" class="search-icon" /> <!-- Add this line -->
+        <input id="songQuery" type="text" placeholder="    Amplify" />
+        <button id="searchButton" disabled>⌕</button>
+      </div></div>
+    </header>
+
+    <!-- Current Song Display -->
+    <div id="currentSongDisplay" class="current-song">
+      <img id="currentThumbnail" src="/placeholder.svg" alt="Video Thumbnail" />
+      <div id="currentTitle"></div>
+      <div class="controls">
+        <button id="downloadPlaylistButton">⇩</button>
+        <button id="addToFavoritesButton">✚</button>
+        <input type="file" id="uploadPlaylistInput" accept=".json" style="display: none;" />
+<button id="uploadPlaylistButton">⇧</button>
+      </div>
+    </div>
+
+    <!-- Song Results -->
+    <img id="loadingGif" src="giphy.webp" alt="Loading..." />
+    <div id="songResultsContainer" class="song-results-container">
+      <button id="leftArrow" class="arrow-button">◀</button>
+      <ul id="songResults" class="song-list"></ul>
+      <button id="rightArrow" class="arrow-button">▶</button>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="box">
+      <button id="backButton">◁</button>
+      <button id="favoriteButton" class="favorite-btn">
+        <span id="heartIcon" class="heart">≡</span>
+      </button>
+      <button id="closeButton">◯</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

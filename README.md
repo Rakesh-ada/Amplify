@@ -2,8 +2,10 @@
 
 A powerful Chrome extension that enhances your YouTube experience by allowing you to search and play YouTube songs in a new tab, and maintain a list of your favorite songs.
 
-![YT Amplify Preview 1](preview1.png)  
-![YT Amplify Preview 2](preview.png)  
+<p align="center">
+  <img src="preview1.png" width="45%" alt="Preview 1">
+  <img src="preview.png" width="45%" alt="Preview 2">
+</p>
 
 ## Features
 
